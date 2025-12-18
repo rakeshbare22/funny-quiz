@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Funny Quiz</title>
+  <style>
+    body { font-family: system-ui, Arial; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 16px; margin: 16px 0; }
+    button { padding: 10px 14px; border-radius: 10px; border: 1px solid #ccc; cursor: pointer; margin: 6px 6px 0 0; }
+    button:hover { transform: translateY(-1px); }
+    .muted { color: #666; }
+  </style>
+</head>
+<body>
+  <h1>😄 Funny Friend Quiz</h1>
+  <p class="muted">Share this page link. Score at the end!</p>
+
+  <div class="card" id="app"></div>
+
+  <script>
+    // ✅ Edit your questions here
+    const questions = [
+      {
+        q: "If I become a superhero, my power is…",
+        options: ["Unlimited naps", "Teleport to snacks", "Talk to animals", "Make Wi-Fi faster"],
+        correct: 1
+      },
+      {
+        q: "My most used button in life is:",
+        options: ["Snooze", "Send", "Mute", "Undo"],
+        correct: 0
+      },
+      {
+        q: "Choose my vibe today:",
+        options: ["Chaotic good", "Sleepy legend", "Focused (for 5 min)", "NPC energy"],
+        correct: 2
+      }
+    ];
+
+    // Optional: randomize question order
+    const shuffled = [...questions].sort(() => Math.random() - 0.5);
+
+    let i = 0;
+    let score = 0;
+
+    const app = document.getElementById("app");
+
+    function render() {
+      const item = shuffled[i];
+      app.innerHTML = `
+        <h2>Q${i + 1}/${shuffled.length}</h2>
+        <p style="font-size: 18px">${item.q}</p>
+        <div id="opts"></div>
+        <p class="muted">Score: ${score}</p>
+      `;
+
+      const opts = document.getElementById("opts");
+      item.options.forEach((text, idx) => {
+        const b = document.createElement("button");
+        b.textContent = text;
+        b.onclick = () => answer(idx);
+        opts.appendChild(b);
+      });
+    }
+
+    function answer(idx) {
+      const item = shuffled[i];
+      const correct = idx === item.correct;
+      if (correct) score++;
+
+      app.innerHTML = `
+        <h2>${correct ? "✅ Nice!" : "❌ Oops!"}</h2>
+        <p>${item.q}</p>
+        <p><b>Your choice:</b> ${item.options[idx]}</p>
+        <p><b>Correct:</b> ${item.options[item.correct]}</p>
+        <button id="next">${i === shuffled.length - 1 ? "See Result" : "Next"}</button>
+        <p class="muted">Score: ${score}</p>
+      `;
+
+      document.getElementById("next").onclick = () => {
+        i++;
+        if (i >= shuffled.length) return result();
+        render();
+      };
+    }
+
+    function result() {
+      const pct = Math.round((score / shuffled.length) * 100);
+      let msg =
+        pct === 100 ? "🏆 YOU KNOW ME TOO WELL!" :
+        pct >= 67 ? "😄 Pretty good!" :
+        pct >= 34 ? "🙂 Not bad, not great!" :
+        "😂 We need more chai talks!";
+
+      app.innerHTML = `
+        <h2>Final Score: ${score}/${shuffled.length} (${pct}%)</h2>
+        <p>${msg}</p>
+        <button id="again">Play Again</button>
+        <button id="share">Copy Share Text</button>
+      `;
+      document.getElementById("again").onclick = () => location.reload();
+      document.getElementById("share").onclick = async () => {
+        const text = `Try my funny quiz 😄 ${location.href}`;
+        await navigator.clipboard.writeText(text);
+        alert("Copied! Send it to your friend.");
+      };
+    }
+
+    render();
+  </script>
+</body>
+</html>
+
