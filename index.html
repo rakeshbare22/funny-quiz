@@ -1,275 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>I’m Sorry</title>
-  <style>
-    :root{
-      --bg1:#0f172a;
-      --bg2:#1f2937;
-      --card:#0b1220cc;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --accent:#f472b6;
-      --accent2:#60a5fa;
-      --ok:#34d399;
-      --no:#fb7185;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(800px 500px at 20% 10%, #3b82f655, transparent 60%),
-        radial-gradient(700px 450px at 80% 30%, #f472b655, transparent 60%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
-      overflow:hidden;
-    }
-    .wrap{width:min(720px, 92vw); padding:18px;}
-    .card{
-      background:var(--card);
-      border:1px solid #ffffff14;
-      border-radius:22px;
-      padding:22px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 20px 60px #00000055;
-      position:relative;
-    }
-    h1{margin:6px 0 8px; font-size:34px; letter-spacing:.2px;}
-    p{margin:8px 0; color:var(--muted); line-height:1.6;}
-    .top{
-      display:flex; gap:16px; align-items:center; flex-wrap:wrap;
-    }
-    .heart{
-      width:78px; height:78px; border-radius:22px;
-      display:grid; place-items:center;
-      background: linear-gradient(135deg, #f472b6, #60a5fa);
-      box-shadow: 0 12px 25px #00000040;
-      transform: rotate(-4deg);
-    }
-    .heart svg{filter: drop-shadow(0 6px 10px #00000033)}
-    .bubble{
-      display:inline-flex; gap:10px; flex-wrap:wrap;
-      margin-top:14px;
-    }
-    .pill{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid #ffffff1a;
-      background:#ffffff0d;
-      color:var(--text);
-      font-size:14px;
-    }
-    .btns{
-      display:flex; gap:12px; flex-wrap:wrap;
-      margin-top:18px;
-    }
-    button, a.btn{
-      border:0;
-      cursor:pointer;
-      text-decoration:none;
-      padding:12px 14px;
-      border-radius:14px;
-      font-weight:700;
-      letter-spacing:.2px;
-      transition: transform .08s ease, filter .08s ease;
-      display:inline-flex; align-items:center; gap:10px;
-      user-select:none;
-    }
-    button:active, a.btn:active{transform: translateY(1px) scale(0.99);}
-    .primary{
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:#0b1220;
-    }
-    .secondary{
-      background:#ffffff12;
-      border:1px solid #ffffff1f;
-      color:var(--text);
-    }
-    .yes{background: linear-gradient(135deg, var(--ok), #a7f3d0); color:#052016;}
-    .no{background: linear-gradient(135deg, var(--no), #fecdd3); color:#2b0b13;}
-    .note{
-      margin-top:16px;
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px dashed #ffffff30;
-      background:#ffffff0a;
-      color: var(--text);
-    }
-    .footer{
-      margin-top:14px;
-      font-size:12px;
-      color:#ffffff66;
-    }
-    .float{
-      position:absolute;
-      inset:auto;
-      width:12px; height:12px;
-      border-radius:50%;
-      background:#ffffff40;
-      animation: drift 7s linear infinite;
-      opacity:.7;
-    }
-    @keyframes drift{
-      from{transform: translateY(40vh) translateX(0) scale(1); opacity:.0;}
-      15%{opacity:.7;}
-      to{transform: translateY(-55vh) translateX(30px) scale(1.4); opacity:0;}
-    }
-    .hidden{display:none;}
-    .center{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-    input{
-      width:100%;
-      margin-top:10px;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid #ffffff22;
-      background:#00000022;
-      color:var(--text);
-      outline:none;
-    }
-    input::placeholder{color:#ffffff55;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap');
+
+:root {
+  --main-color: #ff4d6d;
+  --bg-gradient: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  overflow-x: hidden;
+  text-align: center;
+  color: #fff;
+}
+
+.container {
+  padding: 40px 20px;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
+  animation: fadeInDown 2s ease;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.heart {
+  font-size: 3rem;
+  animation: heartbeat 1.5s infinite;
+  margin: 20px 0;
+}
+
+.message-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 20px;
+  margin: 30px auto;
+  max-width: 600px;
+  animation: fadeIn 3s ease;
+}
+
+.message-box p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 20px;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.footer {
+  margin-top: 50px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  background: #fff;
+  color: var(--main-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--main-color);
+  color: #fff;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Floating hearts */
+.heart-float {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  color: rgba(255,255,255,0.8);
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
-  <!-- floating dots -->
-  <div class="float" style="left:10%; bottom:-20px; animation-delay:0s;"></div>
-  <div class="float" style="left:30%; bottom:-30px; animation-delay:1.2s;"></div>
-  <div class="float" style="left:55%; bottom:-25px; animation-delay:2.1s;"></div>
-  <div class="float" style="left:72%; bottom:-35px; animation-delay:0.7s;"></div>
-  <div class="float" style="left:88%; bottom:-22px; animation-delay:1.7s;"></div>
 
-  <div class="wrap">
-    <div class="card">
-      <div class="top">
-        <div class="heart" aria-hidden="true">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
-            <path d="M12 21s-7-4.6-9.6-9.1C.3 8.3 2.2 5 5.6 5c1.8 0 3.3 1 4.4 2.3C11.1 6 12.6 5 14.4 5c3.4 0 5.3 3.3 3.2 6.9C19 16.4 12 21 12 21z"
-                  fill="#0b1220" opacity="0.95"/>
-          </svg>
-        </div>
-        <div>
-          <h1>I’m really sorry…</h1>
-          <p id="mainText">
-            I know I hurt you / upset you, and I genuinely regret it.
-            You matter to me more than my ego. I want to fix this—if you’ll let me.
-          </p>
-          <div class="bubble">
-            <span class="pill">No excuses</span>
-            <span class="pill">I’ll do better</span>
-            <span class="pill">Can we talk?</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="note" id="questionBox">
-        <b>Can you forgive me?</b>
-        <div class="btns">
-          <button class="yes" id="yesBtn">Yes 🙂</button>
-          <button class="no" id="noBtn">No 😤</button>
-        </div>
-
-        <div class="hidden" id="noMsg" style="margin-top:10px;">
-          <p style="margin:8px 0; color: #ffd1dc;">
-            Okay… I understand. I’ll give you space.  
-            But I’m here whenever you’re ready.
-          </p>
-        </div>
-
-        <div class="hidden" id="yesMsg" style="margin-top:10px;">
-          <p style="margin:8px 0; color: #bbf7d0;">
-            Thank you ❤️ I promise I’ll do better.
-          </p>
-
-          <div class="center">
-            <a class="btn primary" id="whatsBtn" href="#" target="_blank" rel="noopener">
-              Send on WhatsApp
-            </a>
-            <button class="secondary" id="copyBtn">Copy Message</button>
-          </div>
-
-          <input id="customMessage" placeholder="Optional: edit message here before sending…" />
-        </div>
-      </div>
-
-      <div class="footer">
-        Tip: You can edit the message text inside the code (search for <b>mainText</b>).
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // ✅ Change this name if you want (optional)
-    const toName = ""; // e.g. "Aarti"
-
-    const defaultMsg =
-      `Hey${toName ? " " + toName : ""}, I’m really sorry for what happened.\n` +
-      `I know I was wrong and I regret it.\n` +
-      `You matter to me. Can we talk when you feel okay?`;
-
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn  = document.getElementById("noBtn");
-    const yesMsg = document.getElementById("yesMsg");
-    const noMsg  = document.getElementById("noMsg");
-    const copyBtn = document.getElementById("copyBtn");
-    const whatsBtn = document.getElementById("whatsBtn");
-    const customMessage = document.getElementById("customMessage");
-
-    customMessage.value = defaultMsg;
-
-    function updateWhatsAppLink() {
-      const text = encodeURIComponent(customMessage.value.trim() || defaultMsg);
-      // Opens WhatsApp Web on desktop, WhatsApp app on phone
-      whatsBtn.href = `https://wa.me/?text=${text}`;
-    }
-    updateWhatsAppLink();
-
-    customMessage.addEventListener("input", updateWhatsAppLink);
-
-    yesBtn.addEventListener("click", () => {
-      yesMsg.classList.remove("hidden");
-      noMsg.classList.add("hidden");
-      popHearts();
-    });
-
-    noBtn.addEventListener("click", () => {
-      noMsg.classList.remove("hidden");
-      yesMsg.classList.add("hidden");
-    });
-
-    copyBtn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(customMessage.value.trim() || defaultMsg);
-        copyBtn.textContent = "Copied ✅";
-        setTimeout(() => copyBtn.textContent = "Copy Message", 1200);
-      } catch (e) {
-        alert("Copy failed. Please select text and copy manually.");
-      }
-    });
-
-    function popHearts(){
-      for(let i=0;i<18;i++){
-        const s = document.createElement("div");
-        s.textContent = ["❤️","💙","💗","✨","🥺"][Math.floor(Math.random()*5)];
-        s.style.position="fixed";
-        s.style.left = (Math.random()*100) + "vw";
-        s.style.top  = (70 + Math.random()*20) + "vh";
-        s.style.fontSize = (16 + Math.random()*18) + "px";
-        s.style.opacity = "0.95";
-        s.style.transition = "transform 1.4s ease, opacity 1.4s ease";
-        document.body.appendChild(s);
-        requestAnimationFrame(()=>{
-          s.style.transform = `translateY(-${250 + Math.random()*200}px) rotate(${(Math.random()*120-60)}deg)`;
-          s.style.opacity = "0";
-        });
-        setTimeout(()=>s.remove(), 1500);
-      }
-    }
-  </script>
-</body>
-</html>
+<div class="container">
+  <h1>Happy
